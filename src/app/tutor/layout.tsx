@@ -72,7 +72,7 @@ export default function Tutor({
                   className={`${
                     nav.title === selectedIndex &&
                     "bg-green-500 text-white hover:bg-green-500"
-                  } flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100 space-x-3`}
+                  } flex items-center px-6 py-3 cursor-pointer text-gray-600 hover:bg-gray-100 space-x-3`}
                 >
                   <span
                     className={`${
@@ -106,7 +106,7 @@ export default function Tutor({
                   className={`${
                     nav.title === selectedIndex &&
                     "bg-green-500 text-white hover:bg-green-500"
-                  } flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100 space-x-3`}
+                  } flex items-center px-6 py-3 cursor-pointer text-gray-600 hover:bg-gray-100 space-x-3`}
                 >
                   <span
                     className={`${

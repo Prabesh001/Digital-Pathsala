@@ -1,6 +1,14 @@
 import React from "react";
 
 const Register: React.FC = () => {
+  const data:string[] = [
+    "First Name",
+    "Last Name",
+    "Username",
+    "E-Mail",
+    "Password",
+    "Password Confirmation",
+  ];
   return (
     <section className="flex items-center justify-center min-h-screen py-8">
       <div className="w-full max-w-lg">

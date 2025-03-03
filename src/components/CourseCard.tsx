@@ -17,10 +17,12 @@ interface CardProps {
   genre: string;
   thumbnail?: StaticImageData | string;
   profilePhoto: StaticImageData | string;
+  isProfile: boolean;
 }
 
 const Card: React.FC<CardProps> = ({
   price,
+  isProfile,
   prevPrice,
   title,
   rating,
@@ -53,24 +55,26 @@ const Card: React.FC<CardProps> = ({
           </span>
         </div>
 
-        <div className="flex items-center gap-4 my-4">
-          <div className="rounded-full h-8 w-8 overflow-hidden object-contain ">
-            <Image src={profilePhoto} alt="Photo" className="h-full w-full" />
-          </div>
+        {!isProfile && (
+          <div className="flex items-center gap-4 my-4">
+            <div className="rounded-full h-8 w-8 overflow-hidden object-contain ">
+              <Image src={profilePhoto} alt="Photo" className="h-full w-full" />
+            </div>
 
-          <div className="text-gray-400 text-sm">
-            By{" "}
-            <span className="text-black font-bold dark:text-white">
-              {lecturer}
-            </span>{" "}
-            in
-            <br />
-            <span className="text-black font-bold dark:text-white">
-              {genre}
-            </span>
+            <div className="text-gray-400 text-sm">
+              By{" "}
+              <span className="text-black font-bold dark:text-white">
+                {lecturer}
+              </span>{" "}
+              in
+              <br />
+              <span className="text-black font-bold dark:text-white">
+                {genre}
+              </span>
+            </div>
           </div>
-        </div>
-        <hr />
+        )}
+        <hr className="my-2"/>
 
         <del className="text-gray-500 text-[0.8rem]">Rs. {prevPrice}</del>
         <p className="font-bold text-xl">Rs. {price}</p>

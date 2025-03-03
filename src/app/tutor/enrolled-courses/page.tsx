@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import CourseCard from "@/components/CourseCard"
+import CourseCard from "@/components/CourseCard";
 
 const courses = [
   {
@@ -8,7 +8,7 @@ const courses = [
     title: "Class 10 C Programming All Important Solution",
     image:
       "https://imgs.search.brave.com/BU1Aqff_r13UuDJuvA_ho2iiBr7bGzjZAXSjfbBiSwk/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy8w/LzBlL1RlcnJhZ2Vu/X3JlbmRlci5qcGc",
-    originalPrice: 300,
+    price: 300,
     discountedPrice: 99,
     progress: "enrolled",
   },
@@ -26,7 +26,7 @@ const courses = [
     title: "Python Course: Cobra to Python",
     image:
       "https://imgs.search.brave.com/EuPwZyOF5FhVVPL99lAS_5z_Nr0FUuiTP2qWbiIZ40E/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzcyL2Y5/LzRlLzcyZjk0ZTE4/ZWE0NTUxODJkZTg2/MWY3ZDIyYWY5NGE0/LmpwZw",
-    originalPrice: 15000,
+    price: 15000,
     discountedPrice: 1499,
     progress: "completed",
   },
@@ -39,8 +39,6 @@ const completedCourse = courses.filter(
   (course) => course.progress === "completed"
 );
 const activeCourse = courses.filter((course) => course.progress === "active");
-
-console.log(activeCourse, enrolledCourse, completedCourse);
 
 const Navbar = ({
   activeTab,
@@ -77,34 +75,39 @@ const Courses = () => {
       <div className="flex-1 mx-auto">
         <Navbar activeTab={tab} setTab={setTab} />
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 pt-10 pl-3">
+          {tab === "Enrolled Course" &&
+            (enrolledCourse.length !== 0 ? (
+              enrolledCourse.map((course, i: number) => (
+                <CourseCard key={i} isProfile={true} {...course} />
+              ))
+            ) : (
+              <p className="text-center text-xl text-gray-700">
+                No courses available.
+              </p>
+            ))}
 
-          {tab === "Enrolled Course" && (enrolledCourse.length !== 0 ? (
-            enrolledCourse.map((course, i:number) => (
-              <CourseCard key={i} {...course} />
-            ))
-          ) : (
-            <p className="text-center text-xl text-gray-700">
-              No courses available.
-            </p>)
-          )}
+          {tab === "Active Course" &&
+            (activeCourse.length !== 0 ? (
+              activeCourse.map((course, i) => (
+                <CourseCard key={i} isProfile={true} {...course} />
+              ))
+            ) : (
+              <p className="text-center text-xl text-gray-700">
+                No courses available.
+              </p>
+            ))}
 
-          {tab === "Active Course" && (activeCourse.length !== 0 ? (
-            activeCourse.map((course, i) => <CourseCard key={i} {...course} />)
-          ) : (
-            <p className="text-center text-xl text-gray-700">
-              No courses available.
-            </p>)
-          )}
+          {tab === "Completed Course" &&
+            (completedCourse.length !== 0 ? (
+              completedCourse.map((course, i) => (
+                <CourseCard key={i} isProfile={true} {...course} />
+              ))
+            ) : (
+              <p className="text-center text-xl text-gray-700">
+                No courses available.
+              </p>
+            ))}
 
-          {tab === "Completed Course" && (completedCourse.length !== 0 ? (
-            completedCourse.map((course, i) => (
-              <CourseCard key={i} {...course} />
-            ))
-          ) : (
-            <p className="text-center text-xl text-gray-700">
-              No courses available.
-            </p>)
-          )}
         </div>
       </div>
     </div>

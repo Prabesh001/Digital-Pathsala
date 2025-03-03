@@ -1,9 +1,20 @@
-import React from 'react'
+"use client";
+import Image from "next/image";
 
-const page = () => {
+const ReviewsPage = () => {
   return (
-    <div>page</div>
-  )
-}
+    <div className="flex-1 text-center py-12">
+      <h2 className="text-3xl font-bold mb-4">Reviews</h2>
+      <div className="max-w-xs mx-auto mb-6">
+        <Image
+          src="https://digitalpathshalanepal.com/wp-content/plugins/tutor/assets/images/emptystate.svg"
+          alt="No reviews"
+          className="w-full"
+        />
+      </div>
+      <p className="text-gray-500 text-lg">No reviews available yet</p>
+    </div>
+  );
+};
 
-export default page
+export default ReviewsPage;
