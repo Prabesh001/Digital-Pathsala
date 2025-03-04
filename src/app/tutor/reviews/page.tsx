@@ -10,6 +10,8 @@ const ReviewsPage = () => {
           src="https://digitalpathshalanepal.com/wp-content/plugins/tutor/assets/images/emptystate.svg"
           alt="No reviews"
           className="w-full"
+          width={100}
+          height={100}
         />
       </div>
       <p className="text-gray-500 text-lg">No reviews available yet</p>

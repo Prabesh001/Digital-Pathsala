@@ -28,23 +28,23 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="bg-white p-4 flex items-center justify-between top-0 z-50 shadow-md shadow-gray-300">
-      <Image
-        src={logo}
-        alt="Logo"
-        height={48}
-        priority={true}
-        className="cursor-pointer"
-        onClick={() => router.push("/")}
-      />
+        <Image
+          src={logo}
+          alt="Logo"
+          height={48}
+          priority={true}
+          className="cursor-pointer"
+          onClick={() => router.push("/")}
+        />
 
       <div>
         {isOpen ? (
           <div className="relative">
-            <button
+            <button className="mt-2"
               onMouseOver={() => setShowMore(true)}
               onMouseLeave={() => setShowMore(false)}
             >
-              <RxHamburgerMenu color="black" size={30} />
+              <RxHamburgerMenu color="black" size={24} />
             </button>
 
             {showMore && (
