@@ -3,13 +3,17 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useRouter } from "next/navigation";
-import logo from "../../public/images/logo.png";
+import logo from "@/../public/images/logo.png";
+import { FaCartShopping } from "react-icons/fa6";
+import Link from "next/link";
 
 const Navbar: React.FC = () => {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [showMore, setShowMore] = useState<boolean>(false);
   const [hover, setHover] = useState<"tutor" | "student" | "">("");
-  const router = useRouter();
+
+  const isLoggedIn = true;
 
   useEffect(() => {
     const handleResize = () => setIsOpen(window.innerWidth < 800);
@@ -27,20 +31,21 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-white p-4 flex items-center justify-between top-0 z-50 shadow-md shadow-gray-300">
-        <Image
-          src={logo}
-          alt="Logo"
-          height={48}
-          priority={true}
-          className="cursor-pointer"
-          onClick={() => router.push("/")}
-        />
+    <nav className="bg-white mb-4 p-4 flex items-center justify-between top-0 z-50 shadow-md shadow-gray-300">
+      <Image
+        src={logo}
+        alt="Logo"
+        height={48}
+        priority={true}
+        className="cursor-pointer"
+        onClick={() => router.push("/")}
+      />
 
       <div>
         {isOpen ? (
           <div className="relative">
-            <button className="mt-2"
+            <button
+              className="mt-2"
               onMouseOver={() => setShowMore(true)}
               onMouseLeave={() => setShowMore(false)}
             >
@@ -48,18 +53,48 @@ const Navbar: React.FC = () => {
             </button>
 
             {showMore && (
-              <div onMouseOver={()=>setShowMore(true)} onMouseLeave={()=>setShowMore(false)} className="absolute top-7 right-0 bg-white shadow-md shadow-gray-700 p-4 rounded-lg flex flex-col space-y-2 text-gray-600">
+              <div
+                onMouseOver={() => setShowMore(true)}
+                onMouseLeave={() => setShowMore(false)}
+                className="absolute top-7 right-0 bg-white shadow-md shadow-gray-700 p-4 rounded-lg flex flex-col space-y-2 text-gray-600"
+              >
                 <CourseField onClick={handleCourseClick} />
-                <HoverMenu label="Tutor" hover={hover} setHover={setHover} />
-                <HoverMenu label="Students" hover={hover} setHover={setHover} />
+                {isLoggedIn ? (
+                  <>
+                    <MyCart />
+                    <MyProfile />
+                  </>
+                ) : (
+                  <>
+                    <HoverMenu
+                      label="Tutor"
+                      hover={hover}
+                      setHover={setHover}
+                    />
+                    <HoverMenu
+                      label="Students"
+                      hover={hover}
+                      setHover={setHover}
+                    />
+                  </>
+                )}
               </div>
             )}
           </div>
         ) : (
           <div className="flex space-x-4 text-gray-600">
             <CourseField onClick={handleCourseClick} />
-            <HoverMenu label="Tutor" hover={hover} setHover={setHover} />
-            <HoverMenu label="Students" hover={hover} setHover={setHover} />
+            {isLoggedIn ? (
+              <>
+                <MyCart />
+                <MyProfile />
+              </>
+            ) : (
+              <>
+                <HoverMenu label="Tutor" hover={hover} setHover={setHover} />
+                <HoverMenu label="Students" hover={hover} setHover={setHover} />
+              </>
+            )}
           </div>
         )}
       </div>
@@ -119,6 +154,27 @@ const CourseField: React.FC<{ onClick: () => void }> = ({ onClick }) => {
       <span>Courses</span>
       <span className="absolute left-0 bottom-[-5px] w-full h-1 bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform"></span>
     </span>
+  );
+};
+
+const MyCart = () => {
+  const router = useRouter();
+  return (
+    <div className="flex cursor-pointer items-center gap-1 font-semibold text-lg text-gray-600" onClick={()=>router.push("/tutor/order-history")}>
+      <FaCartShopping /> <span>Cart</span>
+      <span className="absolute left-0 bottom-[-5px] w-full h-1 bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform"></span>
+    </div>
+  );
+};
+
+const MyProfile = () => {
+  return (
+    <Link
+      className="flex items-center gap-1 font-semibold text-lg cursor-pointer text-gray-600"
+      href="/tutor"
+    >
+      Profile
+    </Link>
   );
 };
 

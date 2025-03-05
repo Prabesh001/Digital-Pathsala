@@ -2,7 +2,7 @@ import React from "react";
 import Image, { StaticImageData } from "next/image";
 import photo from "../../public/images/banner.png";
 import thmp from "../../public/images/Mr. Sulav Acharya.png";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaEye, FaShoppingCart } from "react-icons/fa";
 import { IoPersonOutline } from "react-icons/io5";
 import { BsClock } from "react-icons/bs";
 
@@ -74,17 +74,26 @@ const Card: React.FC<CardProps> = ({
             </div>
           </div>
         )}
-        <hr className="my-2"/>
+        <hr className="my-2" />
 
         <del className="text-gray-500 text-[0.8rem]">Rs. {prevPrice}</del>
         <p className="font-bold text-xl">Rs. {price}</p>
 
-        <button className="border-2 border-green-500 text-green-500 transition-all duration-100 hover:bg-blue-500 hover:border-blue-500 hover:text-white  w-full p-2 rounded-lg flex items-center justify-center gap-2">
-          <span>
-            <FaShoppingCart size={20} />
-          </span>
-          <span>Add to Cart</span>
-        </button>
+        {!isProfile ? (
+          <button className="border-2 border-green-500 text-green-500 transition-all duration-100 hover:bg-blue-500 hover:border-blue-500 hover:text-white  w-full p-2 rounded-lg flex items-center justify-center gap-2">
+            <span>
+              <FaShoppingCart size={20} />
+            </span>
+            <span>Add to Cart</span>
+          </button>
+        ) : (
+          <button className="border-2 border-green-500 text-green-500 transition-all duration-100 hover:bg-blue-500 hover:border-blue-500 hover:text-white  w-full p-2 rounded-lg flex items-center justify-center gap-2">
+            <span>
+              <FaEye size={20} />
+            </span>
+            <span>View</span>
+          </button>
+        )}
       </div>
     </div>
   );

@@ -2,6 +2,9 @@
 import React, { useState } from "react";
 import { instructorNav, tutorNav } from "@/data/cardData";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
+import { FaSquarePlus,FaUser,FaStar } from "react-icons/fa6";
 
 export default function Tutor({
   children,
@@ -11,13 +14,17 @@ export default function Tutor({
   const [selectedIndex, setSelectedIndex] = useState("Dashboard");
   const router = useRouter();
 
+  const isTutor = true;
+
   return (
     <main className="bg-white">
       <div className="profile px-4 bg-white sm:px-8 md:px-16 lg:px-36 flex flex-col sm:flex-row justify-between items-center py-6">
         <div className="flex items-center flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-4 sm:mb-0">
-          <img
+          <Image
             src="/images/Mr. Sulav Acharya.png"
             alt="Profile Image"
+            width={40}
+            height={40}
             className="h-24 w-24 rounded-full border-4 border-gray-300 object-cover"
           />
           <div className="text-center sm:text-left">
@@ -26,29 +33,35 @@ export default function Tutor({
               {Array(5)
                 .fill(0)
                 .map((_, i) => (
-                  <svg
-                    key={i}
-                    className="w-4 h-4 text-yellow-300 ml-1"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 22 20"
-                  >
-                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                  </svg>
+                  <span className="text-yellow-300" key={i}>
+                    <FaStar />
+                  </span>
                 ))}
             </div>
           </div>
         </div>
 
-        <div className="button">
-          <a
-            href="/tutor/createcourse"
-            className="border text-green-500 hover:bg-green-500 hover:text-white rounded-lg border-green-500 px-4 py-2 transition text-center"
-          >
-            <i className="fa-solid fa-square-plus px-2"></i> Create a New Course
-          </a>
-        </div>
+        {isTutor ? (
+           <div className="button">
+           <Link
+             href="/tutor/createcourse"
+             className="border text-green-500 hover:bg-green-500 hover:text-white rounded-lg border-green-500 px-4 py-2 transition text-center flex items-center gap-2"
+           >
+             <FaUser  />
+             <span>Become an Instructor</span>
+           </Link>
+         </div>
+        ) : (
+          <div className="button">
+           <Link
+             href="/tutor/createcourse"
+             className="border text-green-500 hover:bg-green-500 hover:text-white rounded-lg border-green-500 px-4 py-2 transition text-center flex items-center gap-2"
+           >
+             <FaSquarePlus  />
+             <span>Create a New Course</span>
+           </Link>
+         </div>
+        )}
       </div>
 
       <div className="h-px bg-gray-400 mx-6"></div>
@@ -87,10 +100,10 @@ export default function Tutor({
             </nav>
           </div>
 
-          <div className="instructor border-t border-t-stone-800 mt-4 z-50">
+          {isTutor && <div className="instructor border-t border-t-stone-800 mt-4 z-50">
             <h4 className="text-gray-400 text-md pl-2">Instructor</h4>
             <nav>
-              {instructorNav.map((nav, i) => (
+              {instructorNav?.map((nav, i) => (
                 <div
                   onClick={() => {
                     setSelectedIndex(nav.title);
@@ -119,7 +132,7 @@ export default function Tutor({
                 </div>
               ))}
             </nav>
-          </div>
+          </div>}
         </div>
 
         <div className="w-full h-full">{children}</div>

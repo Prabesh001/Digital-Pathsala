@@ -45,8 +45,6 @@ const InstructorRegistration = () => {
         </div>
       </aside>
 
-      {/* Header */}
-
       {/* Main Content */}
       <main className="flex flex-col items-center justify-center min-h-screen py-12">
         <div className="text-center">

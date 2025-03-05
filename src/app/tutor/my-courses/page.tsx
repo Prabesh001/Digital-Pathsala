@@ -68,7 +68,7 @@ const InstructorCourses = () => {
         <div className="mx-auto p-6">
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 pt-10 pl-3">
             {courses[activeTab].map((course, index) => (
-              <Card key={index} {...course} />
+              <Card key={index} isProfile={true} {...course} />
             ))}
           </div>
         </div>
