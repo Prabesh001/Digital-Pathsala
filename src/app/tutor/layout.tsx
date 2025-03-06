@@ -4,7 +4,7 @@ import { instructorNav, tutorNav } from "@/data/cardData";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { FaSquarePlus,FaUser,FaStar } from "react-icons/fa6";
+import { FaSquarePlus, FaUser, FaStar } from "react-icons/fa6";
 
 export default function Tutor({
   children,
@@ -14,7 +14,7 @@ export default function Tutor({
   const [selectedIndex, setSelectedIndex] = useState("Dashboard");
   const router = useRouter();
 
-  const isTutor = true;
+  const isTutor: boolean = false;
 
   return (
     <main className="bg-white">
@@ -42,25 +42,25 @@ export default function Tutor({
         </div>
 
         {isTutor ? (
-           <div className="button">
-           <Link
-             href="/tutor/createcourse"
-             className="border text-green-500 hover:bg-green-500 hover:text-white rounded-lg border-green-500 px-4 py-2 transition text-center flex items-center gap-2"
-           >
-             <FaUser  />
-             <span>Become an Instructor</span>
-           </Link>
-         </div>
+          <div className="button">
+            <Link
+              href="/tutor/createcourse"
+              className="border text-green-500 hover:bg-green-500 hover:text-white rounded-lg border-green-500 px-4 py-2 transition text-center flex items-center gap-2"
+            >
+              <FaSquarePlus />
+              <span>Create a New Course</span>
+            </Link>
+          </div>
         ) : (
           <div className="button">
-           <Link
-             href="/tutor/createcourse"
-             className="border text-green-500 hover:bg-green-500 hover:text-white rounded-lg border-green-500 px-4 py-2 transition text-center flex items-center gap-2"
-           >
-             <FaSquarePlus  />
-             <span>Create a New Course</span>
-           </Link>
-         </div>
+            <Link
+              href="/tutor/createcourse"
+              className="border text-green-500 hover:bg-green-500 hover:text-white rounded-lg border-green-500 px-4 py-2 transition text-center flex items-center gap-2"
+            >
+              <FaUser />
+              <span>Become an Instructor</span>
+            </Link>
+          </div>
         )}
       </div>
 
@@ -74,10 +74,12 @@ export default function Tutor({
                   onClick={() => {
                     setSelectedIndex(nav.title);
                     router.push(
-                      `${
+                      `/tutor/${
                         nav.title === "Question & Answer"
                           ? "q&a"
-                          : nav.title.toLowerCase().replaceAll(" ", "-")
+                          : nav.title === "Dashboard"
+                          ? "/"
+                          : `${nav.title.toLowerCase().replaceAll(" ", "-")}`
                       }`
                     );
                   }}
@@ -100,39 +102,41 @@ export default function Tutor({
             </nav>
           </div>
 
-          {isTutor && <div className="instructor border-t border-t-stone-800 mt-4 z-50">
-            <h4 className="text-gray-400 text-md pl-2">Instructor</h4>
-            <nav>
-              {instructorNav?.map((nav, i) => (
-                <div
-                  onClick={() => {
-                    setSelectedIndex(nav.title);
-                    router.push(
-                      `${
-                        nav.title === "Question & Answer"
-                          ? "q&a"
-                          : nav.title.toLowerCase().replaceAll(" ", "-")
-                      }`
-                    );
-                  }}
-                  key={i}
-                  className={`${
-                    nav.title === selectedIndex &&
-                    "bg-green-500 text-white hover:bg-green-500"
-                  } flex items-center px-6 py-3 cursor-pointer text-gray-600 hover:bg-gray-100 space-x-3`}
-                >
-                  <span
+          {isTutor && (
+            <div className="instructor border-t border-t-stone-800 mt-4 z-50">
+              <h4 className="text-gray-400 text-md pl-2">Instructor</h4>
+              <nav>
+                {instructorNav?.map((nav, i) => (
+                  <div
+                    onClick={() => {
+                      setSelectedIndex(nav.title);
+                      router.push(
+                        `${
+                          nav.title === "Question & Answer"
+                            ? "q&a"
+                            : nav.title.toLowerCase().replaceAll(" ", "-")
+                        }`
+                      );
+                    }}
+                    key={i}
                     className={`${
-                      selectedIndex === nav.title && "text-white"
-                    } text-green-500 `}
+                      nav.title === selectedIndex &&
+                      "bg-green-500 text-white hover:bg-green-500"
+                    } flex items-center px-6 py-3 cursor-pointer text-gray-600 hover:bg-gray-100 space-x-3`}
                   >
-                    {nav.icon}
-                  </span>
-                  <span className="font-bold text-nowrap">{nav.title}</span>
-                </div>
-              ))}
-            </nav>
-          </div>}
+                    <span
+                      className={`${
+                        selectedIndex === nav.title && "text-white"
+                      } text-green-500 `}
+                    >
+                      {nav.icon}
+                    </span>
+                    <span className="font-bold text-nowrap">{nav.title}</span>
+                  </div>
+                ))}
+              </nav>
+            </div>
+          )}
         </div>
 
         <div className="w-full h-full">{children}</div>

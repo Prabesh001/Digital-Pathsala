@@ -1,6 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import { FaCameraRotate,FaLinkedin, FaTrash,FaGithub, FaFacebook,FaXTwitter, } from "react-icons/fa6";
+import {
+  FaCameraRotate,
+  FaLinkedin,
+  FaTrash,
+  FaGithub,
+  FaFacebook,
+  FaXTwitter,
+} from "react-icons/fa6";
 import { CiGlobe } from "react-icons/ci";
 
 const page = () => {
@@ -10,8 +17,8 @@ const page = () => {
 
   return (
     <div className="flex-1 ">
-      <h4 className="text-xl font-semibold text-gray-800 pl-4">Settings</h4>
-      <div className=" mx-auto  ">
+        <h4 className="text-xl font-semibold text-blue-900 mb-0 m-4">Settings</h4>
+        <div className=" mx-auto  ">
         <nav className="mx-2 px-3 tabs flex sm:flex-row md:overflow-x-scroll lg:overflow-x-hidden gap-10 md:gap-36">
           {navbar.map((nav, i) => (
             <button
@@ -389,7 +396,7 @@ const page = () => {
                     className="block md:inline-block w-full md:w-1/3 mb-2 md:mb-0 text-gray-700"
                   >
                     <span className="icon">
-                      <FaFacebook/>
+                      <FaFacebook />
                     </span>{" "}
                     Facebook:
                   </label>
@@ -407,7 +414,7 @@ const page = () => {
                     className="block md:inline-block w-full md:w-1/3 mb-2 md:mb-0 text-gray-700"
                   >
                     <span className="icon">
-                    <FaXTwitter/>
+                      <FaXTwitter />
                     </span>{" "}
                     Twitter:
                   </label>
@@ -425,7 +432,7 @@ const page = () => {
                     className="block md:inline-block w-full md:w-1/3 mb-2 md:mb-0 text-gray-700"
                   >
                     <span className="icon">
-                      <FaLinkedin/>
+                      <FaLinkedin />
                     </span>{" "}
                     LinkedIn:
                   </label>
@@ -443,7 +450,7 @@ const page = () => {
                     className="block md:inline-block w-full md:w-1/3 mb-2 md:mb-0 text-gray-700"
                   >
                     <span className="icon">
-                      <CiGlobe/>
+                      <CiGlobe />
                     </span>{" "}
                     Website:
                   </label>
@@ -461,7 +468,7 @@ const page = () => {
                     className="block md:inline-block w-full md:w-1/3 mb-2 md:mb-0 text-gray-700"
                   >
                     <span className="icon">
-                      <FaGithub/>
+                      <FaGithub />
                     </span>{" "}
                     GitHub:
                   </label>

@@ -5,7 +5,9 @@ const page = () => {
     <div className="flex h-screen">
       <div className="flex-1 p-8 text-black">
         <div className=" mx-auto  p-8">
-          <h1 className="text-2xl text-black font-semibold mb-6">My Profile</h1>
+          <h4 className="text-xl font-semibold text-blue-900 mb-4">
+            My Profile
+          </h4>
 
           <div className="space-y-4">
             <div className="flex justify-between border-b pb-2">

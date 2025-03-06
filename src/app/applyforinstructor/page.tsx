@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const InstructorRegistration = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [mobileMenuItems, setMobileMenuItems] = useState<React.ReactNode[]>([]);
 
   const toggleMenu = () => {
@@ -54,6 +54,7 @@ const InstructorRegistration = () => {
               alt="Instructor Illustration"
               className="h-64 w-auto"
             />
+            
           </div>
           <h1 className="text-3xl font-bold text-gray-800 mb-4">
             Do you want to start your career as an instructor?
@@ -62,7 +63,10 @@ const InstructorRegistration = () => {
             Tell us your qualifications, show us your passion, and begin
             teaching with us!
           </p>
-          <button onClick={() => router.push("/register")} className="bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-green-600">
+          <button
+            onClick={() => router.push("/register")}
+            className="bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-green-600"
+          >
             Apply Now
           </button>
         </div>

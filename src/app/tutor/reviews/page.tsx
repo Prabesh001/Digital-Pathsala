@@ -2,19 +2,26 @@
 import Image from "next/image";
 
 const ReviewsPage = () => {
+  const reviews = [];
   return (
-    <div className="flex-1 text-center py-12">
-      <h2 className="text-3xl font-bold mb-4">Reviews</h2>
-      <div className="max-w-xs mx-auto mb-6">
-        <Image
-          src="https://digitalpathshalanepal.com/wp-content/plugins/tutor/assets/images/emptystate.svg"
-          alt="No reviews"
-          className="w-full"
-          width={100}
-          height={100}
-        />
-      </div>
-      <p className="text-gray-500 text-lg">No reviews available yet</p>
+    <div className="flex justify-center items-center h-screen w-4/5">
+      {reviews.length === 0 ? (
+        <div className="text-center w-full px-4">
+          <h1 className="text-4xl font-bold mb-6 text-gray-700">Reviews</h1>
+          <div className="flex justify-center items-center mb-6">
+            <img
+              src="https://digitalpathshalanepal.com/wp-content/plugins/tutor/assets/images/emptystate.svg"
+              alt="No Data"
+              className="max-w-full h-auto"
+            />
+          </div>
+          <p className="text-xl text-gray-500">
+            No Data Available in this Section
+          </p>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

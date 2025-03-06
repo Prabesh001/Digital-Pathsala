@@ -1,6 +1,6 @@
 import React from "react";
 import { tutorData } from "@/data/cardData";
-import { IoPersonSharp } from "react-icons/io5";
+import { FaUser } from "react-icons/fa6";
 
 const Tutor = () => {
   return (
@@ -24,7 +24,7 @@ const Tutor = () => {
               </div>
     
               <div className="flex items-center justify-center h-16 w-16 rounded-full bg-green-100 text-green-400 text-4xl">
-                <IoPersonSharp />
+                <FaUser />
               </div>
             </div>
     

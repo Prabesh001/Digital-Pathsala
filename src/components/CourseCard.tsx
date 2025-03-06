@@ -1,10 +1,8 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
-import photo from "../../public/images/banner.png";
-import thmp from "../../public/images/Mr. Sulav Acharya.png";
-import { FaEye, FaShoppingCart } from "react-icons/fa";
-import { IoPersonOutline } from "react-icons/io5";
-import { BsClock } from "react-icons/bs";
+import photo from "@/../public/images/banner.png";
+import thmp from "@/../public/images/Mr. Sulav Acharya.png";
+import { FaEye, FaCartShopping, FaRegUser, FaRegClock } from "react-icons/fa6";
 
 interface CardProps {
   price: number;
@@ -47,10 +45,10 @@ const Card: React.FC<CardProps> = ({
 
         <div className="flex items-center gap-4 mt-2">
           <span className="flex gap-1 items-center" title="Students">
-            <IoPersonOutline color="gray" /> {noOfStudents}{" "}
+            <FaRegUser color="gray" /> {noOfStudents}{" "}
           </span>
           <span className="flex gap-2 items-center">
-            <BsClock color="gray" />
+            <FaRegClock color="gray" />
             {lectureHour}hr
           </span>
         </div>
@@ -82,7 +80,7 @@ const Card: React.FC<CardProps> = ({
         {!isProfile ? (
           <button className="border-2 border-green-500 text-green-500 transition-all duration-100 hover:bg-blue-500 hover:border-blue-500 hover:text-white  w-full p-2 rounded-lg flex items-center justify-center gap-2">
             <span>
-              <FaShoppingCart size={20} />
+              <FaCartShopping size={20} />
             </span>
             <span>Add to Cart</span>
           </button>

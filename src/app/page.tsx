@@ -1,6 +1,6 @@
 import React from "react";
-import Card from "../components/CourseCard";
-import photo from "../../public/images/banner.png";
+import Card from "@/components/CourseCard";
+import photo from "@/../public/images/banner.png";
 import Image from "next/image";
 
 const page = () => {

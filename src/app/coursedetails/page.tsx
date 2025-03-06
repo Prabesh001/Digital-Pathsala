@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import { FaStar } from "react-icons/fa";
 import {
+  FaStar,
   FaClock,
   FaGraduationCap,
   FaLock,
@@ -10,8 +10,9 @@ import {
   FaYoutube,
   FaBookmark,
   FaShare,
+  FaAngleUp,
+  FaAngleDown
 } from "react-icons/fa6";
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 const CoursePage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"overview" | "qa">("overview");
@@ -222,7 +223,7 @@ const CoursePage: React.FC = () => {
                           <span
                             className={"w-6 h-6 text-gray-500 text-xl transition-all duration-500"}
                           >
-                            {openAccordion !== section.title ? <IoIosArrowDown/>: <IoIosArrowUp/>}
+                            {openAccordion !== section.title ? <FaAngleDown/>: <FaAngleUp/>}
                           </span>
                         </button>
                         <div

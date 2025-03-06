@@ -2,7 +2,7 @@
 
 import CategoryFilter from "@/components/CategoryFilter";
 import Card from "@/components/CourseCard";
-import { FaSlidersH } from "react-icons/fa";
+import { FaSliders,FaX } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
 import React, { useEffect, useState } from "react";
 import { cardData } from "@/data/cardData";
@@ -77,7 +77,7 @@ const Course = () => {
               className="bg-green-600 text-white h-max px-3 py-2 rotate-90 rounded-2xl"
               onClick={handleShowSidebar}
             >
-              <FaSlidersH />
+              <FaSliders />
             </div>
           )}
 
