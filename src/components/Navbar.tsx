@@ -5,7 +5,6 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { useRouter } from "next/navigation";
 import logo from "@/../public/images/logo.png";
 import { FaCartShopping } from "react-icons/fa6";
-import Link from "next/link";
 
 const Navbar: React.FC = () => {
   const router = useRouter();
@@ -56,13 +55,13 @@ const Navbar: React.FC = () => {
               <div
                 onMouseOver={() => setShowMore(true)}
                 onMouseLeave={() => setShowMore(false)}
-                className="absolute top-7 right-0 bg-white shadow-md shadow-gray-700 p-4 rounded-lg flex flex-col space-y-2 text-gray-600"
+                className="absolute top-7 right-0 bg-white shadow-md shadow-gray-700 p-4 rounded-lg flex flex-col space-y-2 text-gray-600 z-50"
               >
                 <NavField value="Course" onClick={handleCourseClick} />
                 {isLoggedIn ? (
                   <>
                     <MyCart />
-                    <NavField value="Profile" onClick={()=>router.push("/tutor")}/>
+                    <NavField value="Profile" onClick={()=>router.push("/dashboard")}/>
                   </>
                 ) : (
                   <>
@@ -87,7 +86,7 @@ const Navbar: React.FC = () => {
             {isLoggedIn ? (
               <>
                 <MyCart />
-                <NavField  value="Profile" onClick={()=>router.push("/tutor")}/>
+                <NavField  value="Profile" onClick={()=>router.push("/dashboard")}/>
               </>
             ) : (
               <>
@@ -166,7 +165,7 @@ const MyCart = () => {
     <div className="relative">
       <div
         className="flex cursor-pointer items-center gap-1 font-semibold text-lg text-gray-600"
-        onClick={() => router.push("/tutor/order-history")}
+        onClick={() => router.push("/dashboard/order-history")}
       >
         <FaCartShopping /> <span>Cart</span>
       </div>

@@ -2,7 +2,13 @@ import React from "react";
 import Image, { StaticImageData } from "next/image";
 import photo from "@/../public/images/banner.png";
 import thmp from "@/../public/images/Mr. Sulav Acharya.png";
-import { FaEye, FaCartShopping, FaRegUser, FaRegClock } from "react-icons/fa6";
+import {
+  FaEye,
+  FaCartShopping,
+  FaRegUser,
+  FaRegClock,
+  FaStar,
+} from "react-icons/fa6";
 
 interface CardProps {
   price: number;
@@ -33,11 +39,14 @@ const Card: React.FC<CardProps> = ({
 }) => {
   return (
     <div className="rounded-xl bg-white text-black dark:bg-slate-800 dark:text-white overflow-hidden shadow-sm shadow-gray-500 flex flex-col w-full hover:scale-[1.03] transition-all duration-300">
-      <Image src={thumbnail} alt="Photo" />
+      <Image src={thumbnail} alt="Photo" height={700} width={700} />
       <div className="p-4">
-        <div className="rating flex">
+        <div className="rating flex gap-[2px]">
           {Array.from({ length: rating }, (_, i) => (
-            <span key={i}>⭐️</span>
+            <FaStar color="#fde047" key={i}></FaStar>
+          ))}
+          {Array.from({ length: 5-rating }, (_, i) => (
+            <FaStar color="gray" key={i}></FaStar>
           ))}
         </div>
 
@@ -56,7 +65,13 @@ const Card: React.FC<CardProps> = ({
         {!isProfile && (
           <div className="flex items-center gap-4 my-4">
             <div className="rounded-full h-8 w-8 overflow-hidden object-contain ">
-              <Image src={profilePhoto} alt="Photo" className="h-full w-full" />
+              <Image
+                src={profilePhoto}
+                alt="Photo"
+                className="h-full w-full"
+                height={300}
+                width={300}
+              />
             </div>
 
             <div className="text-gray-400 text-sm">

@@ -34,7 +34,7 @@ const Withdraw = () => {
         <div className="flex items-start sm:items-center m-4 sm:m-8">
           <span className="text-lg mr-2 sm:mr-3 text-green-500"><FaCircleInfo size={15}/></span>
           <p className="text-sm text-gray-600">
-            You can change your <span onClick={()=>router.push("/tutor/settings")} className="text-green-500 cursor-pointer font-medium">Withdraw Preference</span>
+            You can change your <span onClick={()=>router.push("/dashboard/settings")} className="text-green-500 cursor-pointer font-medium">Withdraw Preference</span>
           </p>
         </div>
 

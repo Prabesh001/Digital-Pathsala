@@ -2,13 +2,12 @@
 
 import CategoryFilter from "@/components/CategoryFilter";
 import Card from "@/components/CourseCard";
-import { FaSliders,FaX } from "react-icons/fa6";
+import { FaSliders, FaX } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
 import React, { useEffect, useState } from "react";
-import { cardData } from "@/data/cardData";
+import { cardData } from "@/data/mockdata";
 
 const Course = () => {
-
   interface CardType {
     price: number;
     prevPrice: number;
@@ -110,17 +109,7 @@ const Course = () => {
           {showCategory && <CategoryFilter />}
           <div className="grid gap-x-4 gap-y-8 xsm:grid-cold-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
             {cardData.map((c: CardType, i: number) => (
-              <Card
-                key={i}
-                lectureHour={c.lectureHour}
-                prevPrice={c.prevPrice}
-                price={c.price}
-                title={c.title}
-                genre={c.genre}
-                lecturer={c.lecturer}
-                noOfStudents={c.noOfStudents}
-                rating={c.rating || 5}
-              />
+              <Card key={i} isProfile={false} {...c} />
             ))}
           </div>
         </div>

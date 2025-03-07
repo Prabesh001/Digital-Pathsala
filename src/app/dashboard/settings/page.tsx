@@ -10,24 +10,32 @@ import {
 } from "react-icons/fa6";
 import { CiGlobe } from "react-icons/ci";
 
-const page = () => {
+const Settings = () => {
   const [tab, setTab] = useState("Profile");
 
   const navbar = ["Profile", "Password", "Withdraw", "Social Profile"];
 
+  const SocialProfileFields = [
+    { label: "Facebook", icon: <FaFacebook />, value: "" },
+    { label: "Twitter", icon: <FaXTwitter />, value: "" },
+    { label: "LinkedIn", icon: <FaLinkedin />, value: "" },
+    { label: "Website", icon: <CiGlobe />, value: "" },
+    { label: "Github", icon: <FaGithub />, value: "" },
+  ];
+
   return (
     <div className="flex-1 ">
-        <h4 className="text-xl font-semibold text-blue-900 mb-0 m-4">Settings</h4>
-        <div className=" mx-auto  ">
-        <nav className="mx-2 px-3 tabs flex sm:flex-row md:overflow-x-scroll lg:overflow-x-hidden gap-10 md:gap-36">
+      <h4 className="text-xl font-semibold text-blue-900 mb-0 m-4">Settings</h4>
+      <div className=" mx-auto  ">
+        <nav className="mx-2 px-3 tabs flex justify-between  gap-10">
           {navbar.map((nav, i) => (
             <button
               key={i}
-              className={`${
+              className={`py-2 block hover:text-green-600 focus:outline-none font-medium text-xl text-nowrap ${
                 nav === tab
                   ? "border-b-2 text-green-500 border-green-700"
-                  : "text-black "
-              }   py-2 px-2 block hover:text-green-600 focus:outline-none font-medium text-xl`}
+                  : "text-black"
+              }   `}
               onClick={() => setTab(nav)}
             >
               {nav}
@@ -384,103 +392,35 @@ const page = () => {
 
         {tab === "Social Profile" && (
           <div id="socialprofile" className="panel-content">
-            <div className="profile-links flex justify-center p-5">
+            <div className="profile-links flex justify-center lg:justify-start lg:m-4 p-5">
               <form
                 action="#"
                 method="post"
                 className="w-full max-w-2xl text-gray-600"
               >
-                <div className="mb-4 md:flex md:items-center">
-                  <label
-                    htmlFor="facebook_link"
-                    className="block md:inline-block w-full md:w-1/3 mb-2 md:mb-0 text-gray-700"
-                  >
-                    <span className="icon">
-                      <FaFacebook />
-                    </span>{" "}
-                    Facebook:
-                  </label>
-                  <input
-                    type="url"
-                    name="facebook_link"
-                    id="facebook_link"
-                    placeholder="https://facebook.com/username"
-                    className="w-full md:w-2/3 p-3 border border-gray-300 outline-none rounded-md"
-                  />
-                </div>
-                <div className="mb-4 md:flex md:items-center">
-                  <label
-                    htmlFor="twitter_link"
-                    className="block md:inline-block w-full md:w-1/3 mb-2 md:mb-0 text-gray-700"
-                  >
-                    <span className="icon">
-                      <FaXTwitter />
-                    </span>{" "}
-                    Twitter:
-                  </label>
-                  <input
-                    type="url"
-                    name="twitter_link"
-                    id="twitter_link"
-                    placeholder="https://twitter.com/username"
-                    className="w-full md:w-2/3 p-3 border border-gray-300 outline-none rounded-md"
-                  />
-                </div>
-                <div className="mb-4 md:flex md:items-center">
-                  <label
-                    htmlFor="linkedin_link"
-                    className="block md:inline-block w-full md:w-1/3 mb-2 md:mb-0 text-gray-700"
-                  >
-                    <span className="icon">
-                      <FaLinkedin />
-                    </span>{" "}
-                    LinkedIn:
-                  </label>
-                  <input
-                    type="url"
-                    name="linkedin_link"
-                    id="linkedin_link"
-                    placeholder="https://linkedin.com/username"
-                    className="w-full md:w-2/3 p-3 border border-gray-300 outline-none rounded-md"
-                  />
-                </div>
-                <div className="mb-4 md:flex md:items-center">
-                  <label
-                    htmlFor="website_link"
-                    className="block md:inline-block w-full md:w-1/3 mb-2 md:mb-0 text-gray-700"
-                  >
-                    <span className="icon">
-                      <CiGlobe />
-                    </span>{" "}
-                    Website:
-                  </label>
-                  <input
-                    type="url"
-                    name="website_link"
-                    id="website_link"
-                    placeholder="https://example.com"
-                    className="w-full md:w-2/3 p-3 border border-gray-300 outline-none rounded-md"
-                  />
-                </div>
-                <div className="mb-4 md:flex md:items-center">
-                  <label
-                    htmlFor="github_link"
-                    className="block md:inline-block w-full md:w-1/3 mb-2 md:mb-0 text-gray-700"
-                  >
-                    <span className="icon">
-                      <FaGithub />
-                    </span>{" "}
-                    GitHub:
-                  </label>
-                  <input
-                    type="url"
-                    name="github_link"
-                    id="github_link"
-                    placeholder="https://github.com/username"
-                    className="w-full md:w-2/3 p-3 border border-gray-300 outline-none rounded-md"
-                  />
-                </div>
-
+                {SocialProfileFields.map((p,_) => (
+                  <div key={p.label} className="mb-4">
+                    <label
+                      htmlFor={p.label}
+                      className="flex items-center gap-2 w-full md:w-1/3 mb-2 md:mb-0 text-gray-700"
+                    >
+                      <span className="icon text-lg">{p.icon}</span> {p.label}:
+                    </label>
+                    <input
+                      type="url"
+                      name={p.label}
+                      id={p.label}
+                      defaultValue={p.value}
+                      placeholder={
+                        p.label === "Website"
+                          ? "https://www.example.com"
+                          : `https://www.${p.label.toLowerCase()}.com/username`
+                      }
+                      className="w-full md:w-2/3 p-3 border border-gray-300 outline-none rounded-md"
+                    />
+                  </div>
+                ))}
+                
                 <div className="flex justify-end items-end">
                   <input
                     type="submit"
@@ -497,4 +437,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Settings;

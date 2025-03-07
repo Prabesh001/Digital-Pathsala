@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "price": 514,
+    "prevPrice": 639,
+    "rating": 2,
+    "noOfStudents": 68,
+    "lecturer": "Adan Wasmuth",
+    "lectureHour": 6,
+    "genre": "Comedy|Drama"
+  },
+  {
+    "id": 2,
+    "price": 782,
+    "prevPrice": 598,
+    "rating": 3,
+    "noOfStudents": 51,
+    "lecturer": "Genevra Brugmann",
+    "lectureHour": 2,
+    "genre": "Action|Comedy|Drama"
+  },
+  {
+    "id": 3,
+    "price": 570,
+    "prevPrice": 213,
+    "rating": 5,
+    "noOfStudents": 54,
+    "lecturer": "Lyon Lillecrap",
+    "lectureHour": 3,
+    "genre": "Drama|Romance"
+  },
+  {
+    "id": 4,
+    "price": 579,
+    "prevPrice": 544,
+    "rating": 5,
+    "noOfStudents": 43,
+    "lecturer": "Mendel Hardwell",
+    "lectureHour": 7,
+    "genre": "Drama"
+  },
+  {
+    "id": 5,
+    "price": 557,
+    "prevPrice": 374,
+    "rating": 1,
+    "noOfStudents": 25,
+    "lecturer": "Karim Easseby",
+    "lectureHour": 4,
+    "genre": "Sci-Fi"
+  },
+  {
+    "id": 6,
+    "price": 795,
+    "prevPrice": 460,
+    "rating": 5,
+    "noOfStudents": 89,
+    "lecturer": "Donni Barca",
+    "lectureHour": 7,
+    "genre": "Action|Drama|Sci-Fi|IMAX"
+  },
+  {
+    "id": 7,
+    "price": 296,
+    "prevPrice": 398,
+    "rating": 3,
+    "noOfStudents": 50,
+    "lecturer": "Lawton Cassie",
+    "lectureHour": 9,
+    "genre": "Drama"
+  },
+  {
+    "id": 8,
+    "price": 420,
+    "prevPrice": 968,
+    "rating": 3,
+    "noOfStudents": 17,
+    "lecturer": "Lynnell Vokes",
+    "lectureHour": 4,
+    "genre": "Drama"
+  },
+  {
+    "id": 9,
+    "price": 309,
+    "prevPrice": 480,
+    "rating": 4,
+    "noOfStudents": 25,
+    "lecturer": "Hakim Mungane",
+    "lectureHour": 10,
+    "genre": "Action|Comedy|Fantasy|Romance"
+  },
+  {
+    "id": 10,
+    "price": 153,
+    "prevPrice": 273,
+    "rating": 3,
+    "noOfStudents": 57,
+    "lecturer": "Monika Gardner",
+    "lectureHour": 10,
+    "genre": "Comedy"
+  }
+]
