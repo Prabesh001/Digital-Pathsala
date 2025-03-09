@@ -30,7 +30,7 @@ const CounterCard = ({ target, label }: CounterCardProps) => {
   return (
     <div className="counter-card text-black cursor-pointer p-8">
       <div className="text-4xl font-bold">{count}+</div>
-      <div className="mt-4 text-lg text-gray-100 font-semibold">{label}</div>
+      <div className="mt-4 text-lg text-gray-600 font-semibold">{label}</div>
     </div>
   );
 };

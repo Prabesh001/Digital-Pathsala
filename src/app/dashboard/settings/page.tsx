@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import {
   FaCameraRotate,
   FaLinkedin,
-  FaTrash,
   FaGithub,
   FaFacebook,
   FaXTwitter,
@@ -15,13 +14,63 @@ const Settings = () => {
 
   const navbar = ["Profile", "Password", "Withdraw", "Social Profile"];
 
-  const SocialProfileFields = [
+  const [socialProfileFields, setSocialProfileFields] = useState([
     { label: "Facebook", icon: <FaFacebook />, value: "" },
     { label: "Twitter", icon: <FaXTwitter />, value: "" },
     { label: "LinkedIn", icon: <FaLinkedin />, value: "" },
     { label: "Website", icon: <CiGlobe />, value: "" },
     { label: "Github", icon: <FaGithub />, value: "" },
-  ];
+  ]);
+
+  const [passwordFields, setPasswordFields] = useState([
+    { value: "", label: "Current Password", id: "currentPassword" },
+    { value: "", label: "New Password", id: "newPassword" },
+    { value: "", label: "Confirm New Password", id: "confirmPassword" },
+  ]);
+
+  const [myProfileFields, setMyProfileFields] = useState([
+    { label: "First Name", value: "", id: "firstName" },
+    { label: "Last Name", value: "", id: "lastName" },
+    { label: "Username", value: "", id: "username" },
+    { label: "Phone Number", value: "", id: "phoneNumber" },
+    { label: "Skill/Occupation", value: "", id: "skill" },
+  ]);
+
+  const [withdrawFields, setWithdrawFields] = useState([
+    { label: "Account Name", value: "", id: "accName" },
+    { label: "Account Number", value: "", id: "accNum" },
+    { label: "Bank Name", value: "", id: "bankName" },
+    { label: "IBAN", value: "", id: "iban" },
+    { label: "BIC/SWIFT", value: "", id: "bic" },
+  ]);
+
+  const setter = (setField: any, name: string, value: any) => {
+    setField((prevFields: any) =>
+      prevFields.map((field: any) =>
+        field.id === name ? { ...field, value } : field
+      )
+    );
+  };
+
+  const handleChangeActions = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    field: string
+  ) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    if (field === "profile") {
+      setter(setMyProfileFields, name, value);
+    }
+    if (field === "password") {
+      setter(setPasswordFields, name, value);
+    }
+    if (field === "socialProfile") {
+      setter(setSocialProfileFields, name, value);
+    }
+    if (field === "withdraw") {
+      setter(setWithdrawFields, name, value);
+    }
+  };
 
   return (
     <div className="flex-1 ">
@@ -89,93 +138,42 @@ const Settings = () => {
                       />
                     </button>
                   </div>
-
-                  {/* <div className="absolute top-4 right-4">
-                    <button className="bg-gray-700 text-white px-2 py-2 rounded-full hover:bg-gray-600">
-                      <FaTrash size={13}/>
-                    </button>
-                  </div> */}
                 </div>
               </div>
 
               <form className="mt-20 md:mt-28 space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label
-                      htmlFor="first-name"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      First Name
-                    </label>
-                    <input
-                      type="text"
-                      id="first-name"
-                      className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-transparent"
-                      defaultValue="Sulav"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="last-name"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Last Name
-                    </label>
-                    <input
-                      type="text"
-                      id="last-name"
-                      className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-transparent"
-                      defaultValue="Acharya"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label
-                      htmlFor="user-name"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      User Name
-                    </label>
-                    <input
-                      type="text"
-                      id="user-name"
-                      className="w-full border border-gray-300 rounded-lg p-2 bg-gray-200 focus:outline-none"
-                      defaultValue="sulavacharya2"
-                      readOnly
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="phone-number"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Phone Number
-                    </label>
-                    <input
-                      type="number"
-                      id="phone-number"
-                      className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-transparent"
-                      placeholder="Phone Number"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="occupation"
-                    className="block text-sm font-medium text-gray-700"
+                {myProfileFields.map((ele, _) => (
+                  <div
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                    key={ele.id}
                   >
-                    Skill/Occupation
-                  </label>
-                  <input
-                    type="text"
-                    id="occupation"
-                    className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-transparent"
-                    placeholder="UX Designer"
-                  />
-                </div>
+                    <div>
+                      <label
+                        htmlFor={ele.id}
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        {ele.label}
+                      </label>
+                      <input
+                        type="text"
+                        id={ele.id}
+                        name={ele.id}
+                        className={`${
+                          ele.id === "username"
+                            ? " bg-gray-200 focus:outline-none"
+                            : " focus:outline-none focus:ring-2 focus:border-transparent"
+                        } 
+                        w-full border border-gray-300 rounded-lg p-2
+                        focus:ring-green-300 
+                        `}
+                        value={ele.value}
+                        onChange={(e) => handleChangeActions(e, "profile")}
+                        placeholder={ele.label}
+                        readOnly={ele.id === "username" ? true : false}
+                      />
+                    </div>
+                  </div>
+                ))}
 
                 <div>
                   <label
@@ -216,8 +214,11 @@ const Settings = () => {
 
                 <div className="text-right mt-6">
                   <button
-                    type="submit"
                     className="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      console.log(myProfileFields);
+                    }}
                   >
                     Update Profile
                   </button>
@@ -232,55 +233,31 @@ const Settings = () => {
             <div className="flex h-auto px-10">
               <div className="w-full lg:w-3/4 xl:w-2/3">
                 <form className="bg-white   pt-6 pb-8 mb-4">
-                  <div className="mb-4">
-                    <label
-                      className="block text-gray-700 text-sm font-bold mb-2"
-                      htmlFor="current-password"
-                    >
-                      Current Password
-                    </label>
-                    <input
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      id="current-password"
-                      type="password"
-                      placeholder="Current Password"
-                    />
-                  </div>
-
-                  <div className="mb-4">
-                    <label
-                      className="block text-gray-700 text-sm font-bold mb-2"
-                      htmlFor="new-password"
-                    >
-                      New Password
-                    </label>
-                    <input
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      id="new-password"
-                      type="password"
-                      placeholder="Type Password"
-                    />
-                  </div>
-
-                  <div className="mb-6">
-                    <label
-                      className="block text-gray-700 text-sm font-bold mb-2"
-                      htmlFor="retype-password"
-                    >
-                      Re-type New Password
-                    </label>
-                    <input
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      id="retype-password"
-                      type="password"
-                      placeholder="Type Password"
-                    />
-                  </div>
+                  {passwordFields.map((ele, i) => (
+                    <div className="mb-4" key={i}>
+                      <label
+                        className="block text-gray-700 text-sm font-bold mb-2"
+                        htmlFor={ele.id}
+                      >
+                        {ele.label}
+                      </label>
+                      <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        name={ele.id}
+                        id={ele.id}
+                        type="password"
+                        value={ele.value}
+                        onChange={(e) => handleChangeActions(e, "password")}
+                        placeholder={ele.label}
+                      />
+                    </div>
+                  ))}
 
                   <div className="flex items-center justify-between">
                     <button
                       className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                       type="button"
+                      onClick={() => console.log(passwordFields)}
                     >
                       Reset Password
                     </button>
@@ -309,80 +286,37 @@ const Settings = () => {
                 <p className="text-sm text-gray-500">Min withdraw Rs 80.00</p>
               </div>
 
-              <form action="#" method="post">
+              <form>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label
-                      htmlFor="accountName"
-                      className="block text-sm font-medium text-gray-700"
+                  {withdrawFields.map((field) => (
+                    <div
+                      key={field.id}
+                      className={field.id === "bic" ? "sm:col-span-2" : ""}
                     >
-                      Account Name
-                    </label>
-                    <input
-                      type="text"
-                      id="accountName"
-                      className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="accountNumber"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Account Number
-                    </label>
-                    <input
-                      type="text"
-                      id="accountNumber"
-                      className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="bankName"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Bank Name
-                    </label>
-                    <input
-                      type="text"
-                      id="bankName"
-                      className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="iban"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      IBAN
-                    </label>
-                    <input
-                      type="text"
-                      id="iban"
-                      className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
-                    />
-                  </div>
-
-                  <div className="sm:col-span-2">
-                    <label
-                      htmlFor="bic"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      BIC / SWIFT
-                    </label>
-                    <input
-                      type="text"
-                      id="bic"
-                      className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
-                    />
-                  </div>
+                      <label
+                        htmlFor={field.id}
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        {field.label}
+                      </label>
+                      <input
+                        type="text"
+                        id={field.id}
+                        name={field.id}
+                        onChange={(e) => handleChangeActions(e, "withdraw")}
+                        className={`mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 `}
+                      />
+                    </div>
+                  ))}
                 </div>
 
-                <button className="mt-6 w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded sm:ml-auto block">
+                <button
+                  className="mt-6 w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded sm:ml-auto block"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    console.log(withdrawFields);
+                  }}
+                >
                   Save Withdrawal Account
                 </button>
               </form>
@@ -393,12 +327,8 @@ const Settings = () => {
         {tab === "Social Profile" && (
           <div id="socialprofile" className="panel-content">
             <div className="profile-links flex justify-center lg:justify-start lg:m-4 p-5">
-              <form
-                action="#"
-                method="post"
-                className="w-full max-w-2xl text-gray-600"
-              >
-                {SocialProfileFields.map((p,_) => (
+              <form className="w-full max-w-2xl text-gray-600">
+                {socialProfileFields.map((p, _) => (
                   <div key={p.label} className="mb-4">
                     <label
                       htmlFor={p.label}
@@ -410,7 +340,8 @@ const Settings = () => {
                       type="url"
                       name={p.label}
                       id={p.label}
-                      defaultValue={p.value}
+                      value={p.value}
+                      onChange={(e) => handleChangeActions(e, "socialProfile")}
                       placeholder={
                         p.label === "Website"
                           ? "https://www.example.com"
@@ -420,9 +351,12 @@ const Settings = () => {
                     />
                   </div>
                 ))}
-                
+
                 <div className="flex justify-end items-end">
                   <input
+                    onClick={() => {
+                      console.log(socialProfileFields);
+                    }}
                     type="submit"
                     value="Submit"
                     className="bg-green-500 text-white rounded-md px-4 py-2 hover:bg-green-600"

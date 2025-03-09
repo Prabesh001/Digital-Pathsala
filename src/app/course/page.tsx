@@ -8,18 +8,6 @@ import React, { useEffect, useState } from "react";
 import { cardData } from "@/data/mockdata";
 
 const Course = () => {
-  interface CardType {
-    price: number;
-    prevPrice: number;
-    title: string;
-    rating: number;
-    noOfStudents: number;
-    lectureHour: number;
-    lecturer: string;
-    genre: string;
-    thumbnail?: string;
-    profilePhoto?: string;
-  }
 
   const [showCategory, setShowCategory] = useState<boolean>(
     window.innerWidth > 1024
@@ -108,7 +96,7 @@ const Course = () => {
         <div className="flex gap-4 justify-between">
           {showCategory && <CategoryFilter />}
           <div className="grid gap-x-4 gap-y-8 xsm:grid-cold-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-            {cardData.map((c: CardType, i: number) => (
+            {cardData.map((c, i: number) => (
               <CourseCard key={i} isProfile={false} {...c} />
             ))}
           </div>

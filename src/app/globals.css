@@ -19,3 +19,16 @@ body {
   background: var(--background); */
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.no-inner-spin::-webkit-outer-spin-button,
+.no-inner-spin::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.gradient-bg {
+  background: linear-gradient(to right, #06a10d, #bbf7d0);
+}
+.gradient-blue-bg {
+  background: linear-gradient(to bottom, #f5f8fc, white);
+}

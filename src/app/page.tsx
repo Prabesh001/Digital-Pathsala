@@ -35,13 +35,13 @@ const HomePage = () => {
             <h2 className="font-extrabold text-3xl">Featured Courses</h2>
           </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 pt-10">
-            {featuredCourses.map((course, index:number) => (
+            {featuredCourses.map((course, index: number) => (
               <CourseCard key={index} {...course} />
             ))}
           </div>
         </section>
 
-        <section className="bg-gradient-to-r from-blue-500 to-blue-700">
+        <section className="c-container bg-gradient-to-r gradient-blue-bg">
           <div className="container mx-auto p-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center px-4 py-16">
               <CounterCard target={5000} label="Students" />
@@ -51,10 +51,23 @@ const HomePage = () => {
           </div>
         </section>
 
-        {/* Partners Section */}
+        <div className="counter-text flex flex-col justify-center items-center  rounded-lg p-6 relative bottom-">
+          <div className="relative items-center text-center">
+            <p className="text-3xl  text-black mb-4">
+              "Providing Quality Education at an Affordable
+              <br /> Price is our motto."
+            </p>
+            <span className="author text-gray-600 italic">- Manish Basnet</span>
+          </div>
+        </div>
+
+        {/* Partners Section  */}
         <section className="bg-white py-16">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-extrabold text-center mb-8">
+            <h2 className="mb-8 lg:mb-16 text-3xl font-extrabold tracking-tight leading-tight text-center text-gray-900 ">
+              You’ll be in good company
+            </h2>
+            <h2 className="text-xl font-bold text-gray-700 text-center mb-8 lg:mb-16">
               Our Partners
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
@@ -74,7 +87,7 @@ const HomePage = () => {
         </section>
 
         {/* Blog Section */}
-        <section className="relative bg-blue-500">
+        <section className="relative gradient-bg">
           <div className="container mx-auto relative z-10">
             <h2 className="text-3xl font-bold text-white px-4 py-20 text-center">
               Latest Blogs
@@ -83,7 +96,7 @@ const HomePage = () => {
 
           {/* Wave SVG * */}
           <svg
-            className="w-full absolute bottom-0 left-0"
+            className="w-full absolute h-100px bottom-0 left-0"
             viewBox="0 0 1000 100"
             preserveAspectRatio="xMinYMin meet"
           >
@@ -92,13 +105,6 @@ const HomePage = () => {
               d="M500,97C126.7,96.3,0.8,19.8,0,0v100l1000,0V1C1000,19.4,873.3,97.8,500,97z"
             />
           </svg>
-
-          {/* <div className="container mx-auto relative bottom-[-50px]">
-            <div className="flex flex-nowrap justify-center gap-4 relative z-50">
-              <BlogCard title="Reconnaissance for Bug Bounty Hunting" date="Jan 14, 2020"/>
-              <BlogCard title="Reconnaissance for Bug Bounty Hunting" date="Jan 14, 2020"/>
-            </div>
-          </div> */}
           <BlogCards />
         </section>
 

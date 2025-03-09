@@ -58,12 +58,15 @@ const Navbar: React.FC = () => {
                 className="absolute top-7 right-0 bg-white shadow-md shadow-gray-700 p-4 rounded-lg flex flex-col space-y-2 text-gray-600 z-50"
               >
                 <div onClick={handleCourseClick}>
-                  <NavField value="Course" redirect="/course"/>
+                  <NavField value="Course" redirect="/course" />
                 </div>
                 {isLoggedIn ? (
                   <>
                     <MyCart />
-                    <NavField value="Profile" redirect="/dashboard/my-profile"/>
+                    <NavField
+                      value="Profile"
+                      redirect="/dashboard/my-profile"
+                    />
                   </>
                 ) : (
                   <>
@@ -85,12 +88,12 @@ const Navbar: React.FC = () => {
         ) : (
           <div className="flex space-x-4 text-gray-600">
             <div onClick={handleCourseClick}>
-              <NavField value="Course" redirect="/course"/>
+              <NavField value="Course" redirect="/course" />
             </div>
             {isLoggedIn ? (
               <>
                 <MyCart />
-                <NavField value="Profile" redirect="/dashboard/my-profile"/>
+                <NavField value="Profile" redirect="/dashboard/my-profile" />
               </>
             ) : (
               <>
@@ -162,19 +165,18 @@ const NavField: React.FC<{ value: string; redirect: string }> = ({
 
 const MyCart = () => {
   return (
-    <div className="relative hover:text-blue-600 group">
-      <Link href="/dashboard/order-history">
-        <div className="flex hover:text-blue-600 cursor-pointer items-center gap-1 font-semibold text-lg text-gray-600">
-          <FaCartShopping /> <span>Cart</span>
-        </div>
-        <span
-          className="absolute w-4 h-4 p-2 rounded-full -top-1 -right-3 text-[0.70em] bg-red-500 text-white overflow-hidden flex items-center justify-center"
-        >
-          9
-        </span>
-      </Link>
+    <Link
+      className="relative hover:text-blue-600 group"
+      href="/dashboard/order-history"
+    >
+      <div className="flex hover:text-blue-600 cursor-pointer items-center gap-1 font-semibold text-lg text-gray-600">
+        <FaCartShopping /> <span>Cart</span>
+      </div>
+      <span className="absolute w-4 h-4 p-2 rounded-full -top-1 -right-3 text-[0.70em] bg-red-500 text-white overflow-hidden flex items-center justify-center">
+        9
+      </span>
       <span className="absolute left-0 bottom-[-5px] w-full h-1 bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform"></span>
-    </div>
+    </Link>
   );
 };
 

@@ -1,5 +1,6 @@
 import React from "react";
-import Image, { StaticImageData } from "next/image";
+import { CardProps } from "@/ofType/CourseCard";
+import Image from "next/image";
 import photo from "@/../public/images/banner.png";
 import thmp from "@/../public/images/Mr. Sulav Acharya.png";
 import {
@@ -10,21 +11,7 @@ import {
   FaStar,
 } from "react-icons/fa6";
 
-interface CardProps {
-  price: number;
-  prevPrice: number;
-  title: string;
-  rating: number;
-  noOfStudents: number;
-  lectureHour: number;
-  lecturer: string;
-  genre: string;
-  thumbnail?: StaticImageData | string;
-  profilePhoto: StaticImageData | string;
-  isProfile: boolean;
-}
-
-const Card: React.FC<CardProps> = ({
+const CourseCard: React.FC<CardProps> = ({
   price,
   isProfile,
   prevPrice,
@@ -38,19 +25,19 @@ const Card: React.FC<CardProps> = ({
   profilePhoto = thmp,
 }) => {
   return (
-    <div className="rounded-xl bg-white text-black dark:bg-slate-800 dark:text-white overflow-hidden shadow-sm shadow-gray-500 flex flex-col w-full hover:scale-[1.03] transition-all duration-300">
-      <Image src={thumbnail} alt="Photo" height={700} width={700} />
+    <div className="rounded-xl bg-white text-black cursor-pointer overflow-hidden shadow-sm shadow-gray-500 flex flex-col w-full hover:scale-[1.03] transition-all duration-300">
+      <Image src={thumbnail} alt="Photo" height={700} width={721} className="hover:opacity-65 transition duration-300"/>
       <div className="p-4">
         <div className="rating flex gap-[2px]">
           {Array.from({ length: rating }, (_, i) => (
             <FaStar color="#fde047" key={i}></FaStar>
           ))}
           {Array.from({ length: 5 - rating }, (_, i) => (
-            <FaStar color="gray" key={i}></FaStar>
+            <FaStar color="rgb(209 213 219)" key={i}></FaStar>
           ))}
         </div>
 
-        <h3 className="text-xl font-bold">{title}</h3>
+        <h3 className="text-xl font-bold inline hover:text-green-600">{title}</h3>
 
         <div className="flex items-center gap-4 mt-2">
           <span className="flex gap-1 items-center" title="Students">
@@ -74,14 +61,14 @@ const Card: React.FC<CardProps> = ({
               />
             </div>
 
-            <div className="text-gray-400 text-sm">
+            <div className="text-gray-500 text-sm">
               By{" "}
-              <span className="text-black font-bold dark:text-white">
+              <span className="text-black font-bold">
                 {lecturer}
               </span>{" "}
               in
               <br />
-              <span className="text-black font-bold dark:text-white">
+              <span className="text-black font-bold">
                 {genre}
               </span>
             </div>
@@ -112,4 +99,4 @@ const Card: React.FC<CardProps> = ({
   );
 };
 
-export default Card;
+export default CourseCard;
