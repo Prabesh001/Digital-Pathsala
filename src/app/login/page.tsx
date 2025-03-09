@@ -65,7 +65,7 @@ const Login: React.FC = () => {
             </div>
             <div className="mb-4 text-center">
               <a
-                href="/forgetpassword.html"
+                href="/forgetpassword"
                 className="text-base md:text-lg underline text-green-500 hover:text-green-600"
               >
                 Forgot your password?

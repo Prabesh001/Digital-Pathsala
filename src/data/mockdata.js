@@ -1,6 +1,7 @@
 export const featuredCourses = [
   {
     id: 1,
+    title:"Class 10 C Programming All Important Solution",
     price: 514,
     prevPrice: 639,
     rating: 2,
@@ -11,6 +12,7 @@ export const featuredCourses = [
   },
   {
     id: 2,
+    title:"Class 10 C Programming All Important Solution",
     price: 782,
     prevPrice: 598,
     rating: 3,
@@ -21,6 +23,7 @@ export const featuredCourses = [
   },
   {
     id: 3,
+    title:"Class 10 C Programming All Important Solution",
     price: 570,
     prevPrice: 213,
     rating: 5,
@@ -31,6 +34,7 @@ export const featuredCourses = [
   },
   {
     id: 4,
+    title:"Class 10 C Programming All Important Solution",
     price: 579,
     prevPrice: 544,
     rating: 5,
@@ -44,6 +48,7 @@ export const featuredCourses = [
     price: 557,
     prevPrice: 374,
     rating: 1,
+    title:"Class 10 C Programming All Important Solution",
     noOfStudents: 25,
     lecturer: "Karim Easseby",
     lectureHour: 4,
@@ -55,6 +60,7 @@ export const featuredCourses = [
     prevPrice: 460,
     rating: 5,
     noOfStudents: 89,
+    title:"Class 10 C Programming All Important Solution",
     lecturer: "Donni Barca",
     lectureHour: 7,
     genre: "Action|Drama|Sci-Fi|IMAX",
@@ -67,6 +73,7 @@ export const featuredCourses = [
     noOfStudents: 50,
     lecturer: "Lawton Cassie",
     lectureHour: 9,
+    title:"Class 10 C Programming All Important Solution",
     genre: "Drama",
   },
   {
@@ -75,6 +82,7 @@ export const featuredCourses = [
     prevPrice: 968,
     rating: 3,
     noOfStudents: 17,
+    title:"Class 10 C Programming All Important Solution",
     lecturer: "Lynnell Vokes",
     lectureHour: 4,
     genre: "Drama",
@@ -83,6 +91,7 @@ export const featuredCourses = [
     id: 9,
     price: 309,
     prevPrice: 480,
+    title:"Class 10 C Programming All Important Solution",
     rating: 4,
     noOfStudents: 25,
     lecturer: "Hakim Mungane",
@@ -148,7 +157,7 @@ export const cardData = [
     lectureHour: 8,
     thumbnail: "http://dummyimage.com/192x100.png/cc0000/ffffff",
     profilePhoto: "http://dummyimage.com/189x100.png/dddddd/000000",
-    rating: 1.9,
+    rating: 1.5,
   },
   {
     lecturer: "Clayborn",

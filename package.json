@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@tinymce/tinymce-react": "^6.0.0",
+    "@types/lodash": "^4.17.16",
     "lodash": "^4.17.21",
     "next": "15.1.7",
     "react": "^19.0.0",

@@ -48,7 +48,7 @@ const Tutor = () => {
           <div className="flex items-center justify-center md:justify-start space-x-2">
             <i className="fa-regular fa-circle-xmark text-xl text-red-500"></i>
             <span className="text-sm text-gray-600 underline underline-offset-4 cursor-pointer hover:text-green-500">
-              <a href="/dashboard/withdraw.html">Set Withdraw Method</a>
+              <a href="/dashboard/withdraw">Set Withdraw Method</a>
             </span>
           </div>
         </div>

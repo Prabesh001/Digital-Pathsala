@@ -1,5 +1,3 @@
-import React from "react";
-
 const MyProfile = () => {
   const userInfo = [
     { label: "Registration Number", value: "010101010100101" },

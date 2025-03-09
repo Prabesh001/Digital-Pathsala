@@ -45,7 +45,7 @@ const Card: React.FC<CardProps> = ({
           {Array.from({ length: rating }, (_, i) => (
             <FaStar color="#fde047" key={i}></FaStar>
           ))}
-          {Array.from({ length: 5-rating }, (_, i) => (
+          {Array.from({ length: 5 - rating }, (_, i) => (
             <FaStar color="gray" key={i}></FaStar>
           ))}
         </div>
