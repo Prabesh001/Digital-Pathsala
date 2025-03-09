@@ -168,7 +168,7 @@ const MyCart = () => {
           <FaCartShopping /> <span>Cart</span>
         </div>
         <span
-          className={`absolute w-4 h-4 p-2 rounded-full -top-1 -right-1 md:right-1 text-[0.70em] bg-red-500 text-white overflow-hidden flex items-center justify-center`}
+          className="absolute w-4 h-4 p-2 rounded-full -top-1 -right-3 text-[0.70em] bg-red-500 text-white overflow-hidden flex items-center justify-center"
         >
           9
         </span>
