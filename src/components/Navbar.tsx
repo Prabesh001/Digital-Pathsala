@@ -5,6 +5,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { useRouter } from "next/navigation";
 import logo from "@/../public/images/logo.png";
 import { FaCartShopping } from "react-icons/fa6";
+import Link from "next/link";
 
 const Navbar: React.FC = () => {
   const router = useRouter();
@@ -26,7 +27,6 @@ const Navbar: React.FC = () => {
 
   const handleCourseClick = () => {
     setShowMore(false);
-    router.push("/course");
   };
 
   return (
@@ -57,11 +57,13 @@ const Navbar: React.FC = () => {
                 onMouseLeave={() => setShowMore(false)}
                 className="absolute top-7 right-0 bg-white shadow-md shadow-gray-700 p-4 rounded-lg flex flex-col space-y-2 text-gray-600 z-50"
               >
-                <NavField value="Course" onClick={handleCourseClick} />
+                <div onClick={handleCourseClick}>
+                  <NavField value="Course" redirect="/course"/>
+                </div>
                 {isLoggedIn ? (
                   <>
                     <MyCart />
-                    <NavField value="Profile" onClick={()=>router.push("/dashboard")}/>
+                    <NavField value="Profile" redirect="/dashboard/my-profile"/>
                   </>
                 ) : (
                   <>
@@ -82,11 +84,13 @@ const Navbar: React.FC = () => {
           </div>
         ) : (
           <div className="flex space-x-4 text-gray-600">
-            <NavField onClick={handleCourseClick} value="Course"/>
+            <div onClick={handleCourseClick}>
+              <NavField value="Course" redirect="/course"/>
+            </div>
             {isLoggedIn ? (
               <>
                 <MyCart />
-                <NavField  value="Profile" onClick={()=>router.push("/dashboard")}/>
+                <NavField value="Profile" redirect="/dashboard/my-profile"/>
               </>
             ) : (
               <>
@@ -144,37 +148,34 @@ const LoginOption: React.FC = () => {
   );
 };
 
-const NavField: React.FC<{ onClick: () => void; value: string }> = ({
-  onClick,
+const NavField: React.FC<{ value: string; redirect: string }> = ({
   value,
+  redirect,
 }) => {
   return (
-    <span
-      className="relative group text-gray-600 font-semibold text-lg transition duration-300 hover:text-blue-600 w-max cursor-pointer"
-      onClick={onClick}
-    >
-      <span>{value}</span>
+    <span className="relative group text-gray-600 font-semibold text-lg transition duration-300 hover:text-blue-600 w-max cursor-pointer">
+      <Link href={redirect}>{value}</Link>
       <span className="absolute left-0 bottom-[-5px] w-full h-1 bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform"></span>
     </span>
   );
 };
 
 const MyCart = () => {
-  const router = useRouter();
   return (
-    <div className="relative">
-      <div
-        className="flex cursor-pointer items-center gap-1 font-semibold text-lg text-gray-600"
-        onClick={() => router.push("/dashboard/order-history")}
-      >
-        <FaCartShopping /> <span>Cart</span>
-      </div>
-      <div className={`absolute w-4 h-4 p-2 rounded-full md:right-[-12px] top-[-2px] right-[-2px] text-[0.70em] bg-red-500 text-white overflow-hidden flex items-center justify-center`}>
-        9
-      </div>
+    <div className="relative hover:text-blue-600 group">
+      <Link href="/dashboard/order-history">
+        <div className="flex hover:text-blue-600 cursor-pointer items-center gap-1 font-semibold text-lg text-gray-600">
+          <FaCartShopping /> <span>Cart</span>
+        </div>
+        <span
+          className={`absolute w-4 h-4 p-2 rounded-full -top-1 -right-1 md:right-1 text-[0.70em] bg-red-500 text-white overflow-hidden flex items-center justify-center`}
+        >
+          9
+        </span>
+      </Link>
+      <span className="absolute left-0 bottom-[-5px] w-full h-1 bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform"></span>
     </div>
   );
 };
-
 
 export default Navbar;
